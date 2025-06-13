@@ -1,28 +1,23 @@
-.remember-me input:checked ~ .check-mark {
-  background-color: #48bb78;
+/* frontend/src/app/login/login.scss */
 
-  &:after {
-    display: block;
-  }
+/* No custom SCSS is strictly needed with Tailwind CSS for the current login/register design. */
+/* All styling is applied directly in login.html using Tailwind utility classes. */
+
+/*
+   You can use this file for:
+   - Defining custom CSS variables (e.g., for consistent branding colors).
+   - Adding complex animations or transitions not easily achievable with Tailwind's utility classes.
+   - Overriding specific Tailwind default styles if necessary.
+   - Styles for pseudo-elements (::before, ::after) or specific states (:focus, :active) if not handled by Tailwind.
+*/
+
+/* Ensure spinner is visible and positioned correctly */
+/* This style provides consistent spacing for the spinner component. */
+app-spinner {
+  margin-left: 10px; /* Adjust spacing as needed */
 }
 
-.check-mark {
-  &::after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-}
-
-/* Style the checkmark/indicator */
-.remember-me .check-mark:after {
-  left: 6px;
-  top: 3px;
-  width: 7px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+/* Clean up: Removed the problematic empty ruleset that caused the 'emptyRules' warning. */
+/* The following styles were from a previous design or an example and are no longer relevant if not used:
+.form-checkbox
+*/

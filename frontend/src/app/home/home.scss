@@ -1,66 +1,51 @@
-/* Style for background animation */
-.scroll-bg {
-  -webkit-animation-name: scrollSmall;
-  animation-name: scrollSmall;
-  -webkit-animation-duration: 15s;
-  animation-duration: 15s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+/* frontend/src/app/home/home.scss */
+
+/* Optional: Define a base font for better consistency if not set globally in styles.scss */
+/* If you already set font-family in src/styles.scss, you can remove this block to avoid redundancy. */
+body {
+  font-family: 'Inter', sans-serif; /* Example font, ensure it's imported if not a system font */
 }
 
-@media (min-width: 1024px) {
-  .scroll-bg {
-    -webkit-animation-name: scrollLarge;
-    animation-name: scrollLarge;
-    -webkit-animation-duration: 35s;
-    animation-duration: 35s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
+/* Specific styles for elements in home.html that require more than just Tailwind utility classes */
+
+/* Hero Section (styles mostly handled by Tailwind and inline in HTML) */
+/* The background image, overlay, and content positioning are managed in home.html. */
+/* This section can be used for advanced effects like custom animations or specific sizing not covered by Tailwind. */
+
+/* Feature cards hover effect */
+/* These styles enhance the visual feedback when hovering over the feature cards. */
+.bg-white.rounded-lg.shadow-lg {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.bg-white.rounded-lg.shadow-lg:hover {
+  transform: translateY(-5px); /* Lifts the card slightly on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Creates a stronger shadow on hover */
+}
+
+/* General section padding and container centering */
+/* These apply a consistent vertical padding to all <section> elements and center the .container. */
+section {
+  padding: 4rem 0; /* Add top and bottom padding for sections */
+}
+
+.container {
+  max-width: 1200px; /* Sets a maximum width for content within containers */
+  margin: 0 auto; /* Centers the container horizontally */
+}
+
+/* Responsive adjustments for text sizes within the hero section on smaller screens */
+/* These media queries adjust font sizes to ensure better readability on mobile devices. */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 3rem; /* Adjusts main heading font size for tablets/mobile */
+  }
+  .hero-section p {
+    font-size: 1rem; /* Adjusts paragraph font size for tablets/mobile */
   }
 }
 
-@keyframes scrollSmall {
-  0% {
-    transform: rotate(-13deg) translateY(0);
-  }
-  to {
-    transform: rotate(-13deg) translateY(-639px);
-  }
-}
-
-@keyframes scrollLarge {
-  0% {
-    transform: rotate(-13deg) translateY(0);
-  }
-  to {
-    transform: rotate(-13deg) translateY(-1278px);
-  }
-}
-
-.content-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.content:hover .content-overlay {
-  opacity: 1;
-}
-
-.content-details {
-  transition: all 0.4s ease-in-out 0s;
-  top: 50%;
-}
-
-.content:hover .content-details {
-  top: 40%;
-  left: 0%;
-  opacity: 1;
-  transform: translate(0%, 40%);
-}
-
-.fadeIn-down {
-  top: 10%;
-}
+/* Clean up: Removed the problematic empty ruleset that caused the 'emptyRules' warning. */
+/* The following styles were from a previous design and are no longer relevant:
+.scroll-bg, .bg-welcome, .content-overlay, .content-details, .fadeIn-down
+*/

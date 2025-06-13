@@ -1,5 +1,63 @@
 <app-nav-sidebar></app-nav-sidebar>
-<div class="relative md:ml-64 bg-gray-200">
+<div class="relative md:ml-64 bg-gray-200 min-h-screen">
   <app-navbar></app-navbar>
-  <router-outlet></router-outlet>
+
+  <div class="p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tổng quan Dashboard</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-blue-100 p-4 rounded-lg flex flex-col items-center justify-center">
+          <p class="text-lg text-blue-800">Tổng số người dùng</p>
+          <p class="text-4xl font-bold text-blue-900">{{ dashboardData.totalUsers }}</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded-lg flex flex-col items-center justify-center">
+          <p class="text-lg text-green-800">Tổng số bài kiểm tra</p>
+          <p class="text-4xl font-bold text-green-900">{{ dashboardData.totalTests }}</p>
+        </div>
+        <div class="bg-yellow-100 p-4 rounded-lg flex flex-col items-center justify-center">
+          <p class="text-lg text-yellow-800">Người dùng hoạt động</p>
+          <p class="text-4xl font-bold text-yellow-900">{{ dashboardData.activeUsers }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-6">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Quản lý người dùng</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-600">Username</th>
+              <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-600">Email</th>
+              <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-600">Role</th>
+              <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td class="py-2 px-4 border-b border-gray-200">{{ user.username }}</td>
+              <td class="py-2 px-4 border-b border-gray-200">{{ user.email }}</td>
+              <td class="py-2 px-4 border-b border-gray-200">{{ user.role }}</td>
+              <td class="py-2 px-4 border-b border-gray-200">
+                <ng-container *ngIf="user.role === 'user'">
+                  <button (click)="updateUserRole(user, 'admin')" class="bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600 mr-2">
+                    Cấp quyền Admin
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="user.role === 'admin'">
+                  <button (click)="updateUserRole(user, 'user')" class="bg-orange-500 text-white px-3 py-1 rounded-md text-sm hover:bg-orange-600">
+                    Hạ quyền User
+                  </button>
+                </ng-container>
+              </td>
+            </tr>
+            <tr *ngIf="users.length === 0">
+              <td colspan="4" class="py-4 text-center text-gray-500">Không có người dùng nào.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
