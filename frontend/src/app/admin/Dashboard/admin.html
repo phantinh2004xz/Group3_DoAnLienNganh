@@ -1,0 +1,73 @@
+<app-nav-sidebar></app-nav-sidebar>
+<div class="relative md:ml-64 bg-gray-200 min-h-screen">
+  <app-navbar></app-navbar>
+  <div *ngIf="router.url === '/admin' || router.url === '/admin/dashboard'">
+    <div class="p-4 md:p-8">
+      <div class="flex justify-between items-center bg-blue-600 text-white p-4 rounded-t-lg shadow-md">
+        <h1 class="text-2xl font-bold uppercase">Dashboard</h1>
+        <div class="flex items-center">
+          <div class="relative mr-4">
+            <input type="text" placeholder="Search here..." class="py-2 px-4 rounded-full bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+            <i class="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+          </div>
+          <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User Avatar" class="h-8 w-8 rounded-full border-2 border-white">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 bg-white shadow-lg rounded-b-lg mb-8">
+        <div class="bg-blue-100 p-4 rounded-lg flex items-center justify-between shadow-md">
+          <div>
+            <p class="text-blue-800 text-lg">NGƯỜI DÙNG</p>
+            <p class="text-blue-900 text-4xl font-bold">{{ dashboardData.totalUsers }}</p>
+            <p class="text-green-600 text-sm mt-1">▲ +2200% so tuần trước</p>
+          </div>
+          <div class="bg-blue-400 p-3 rounded-full flex items-center justify-center">
+            <i class="fas fa-users text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <div class="bg-orange-100 p-4 rounded-lg flex items-center justify-between shadow-md">
+          <div>
+            <p class="text-orange-800 text-lg">ĐỀ KIỂM TRA</p>
+            <p class="text-orange-900 text-4xl font-bold">{{ dashboardData.totalTests }}</p>
+            <p class="text-green-600 text-sm mt-1">▲ +200% so tuần trước</p>
+          </div>
+          <div class="bg-orange-400 p-3 rounded-full flex items-center justify-center">
+            <i class="fas fa-file-alt text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <div class="bg-red-100 p-4 rounded-lg flex items-center justify-between shadow-md">
+          <div>
+            <p class="text-red-800 text-lg">CÂU HỎI</p>
+            <p class="text-red-900 text-4xl font-bold">{{ dashboardData.totalQuestions }}</p>
+            <p class="text-red-600 text-sm mt-1">▼ -96% so tuần trước</p>
+          </div>
+          <div class="bg-red-400 p-3 rounded-full flex items-center justify-center">
+            <i class="fas fa-question text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <div class="bg-teal-100 p-4 rounded-lg flex items-center justify-between shadow-md">
+          <div>
+            <p class="text-teal-800 text-lg">BÀI LÀM</p>
+            <p class="text-teal-900 text-4xl font-bold">{{ dashboardData.totalSubmissions }}</p>
+            <p class="text-green-600 text-sm mt-1">▲ +3567% so tuần trước</p>
+          </div>
+          <div class="bg-teal-400 p-3 rounded-full flex items-center justify-center">
+            <i class="fas fa-tasks text-white text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 mb-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Thống kê bài kiểm tra <span class="text-gray-500 text-sm">(7 ngày gần nhất)</span></h3>
+        <div class="h-64 bg-gray-900 rounded-lg flex items-center justify-center text-white">
+          <p>Nội dung biểu đồ sẽ hiển thị ở đây</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

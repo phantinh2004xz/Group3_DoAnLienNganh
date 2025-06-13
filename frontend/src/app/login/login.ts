@@ -8,7 +8,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { SpinnerComponent } from '../shared/spinner/spinner'; // Đảm bảo đường dẫn đúng
+import { SpinnerComponent } from '../shared/spinner/spinner.component'; // Đảm bảo đường dẫn đúng
 
 import {
   Auth,
